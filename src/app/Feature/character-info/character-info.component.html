@@ -1,0 +1,25 @@
+<mat-card *ngIf="character">
+  <mat-card-content>
+    <div>
+      <div>{{character.name}}</div>
+      <div>{{character.description}}</div>
+      <div>{{character.img}}</div>
+      <div>Race: {{character.race}}</div>
+      <div>Health: {{character.hp}} / {{character.maxHp}} (Regen:{{character.regen}})</div>
+      <div>Armor: {{character.armor}}</div>
+      <div class="stats">
+        <div>Defense: {{character.defense}}</div>
+        <div>Strength: {{character.strength}}</div>
+        <div>Intellect: {{character.intellect}}</div>
+        <div>Agility: {{character.agility}}</div>
+        <div>Luck: {{character.luck}}</div>
+      </div>
+      <div>Gold: {{character.gold}}</div>
+      <div>Xp: {{character.experience}}</div>
+      <div>Level: {{character.level}}</div>
+      <div>Talent: {{character.talent}}</div>
+      <div>{{character.type}}</div>
+      <div>{{character.timeout}}</div>
+    </div>
+  </mat-card-content>
+</mat-card>

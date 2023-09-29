@@ -1,0 +1,3 @@
+<app-character-info [character]="Hero"></app-character-info>
+<app-action-list *ngIf="!activeAction" [character]="Hero"></app-action-list>
+<app-character-info *ngIf="activeAction" [character]="Monster"></app-character-info>

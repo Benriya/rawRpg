@@ -1,0 +1,7 @@
+<div *ngIf="character">
+  <app-action-button [actionName]="'Fight'" (click)="fight()"></app-action-button>
+  <app-action-button [actionName]="'Open chest'"></app-action-button>
+  <app-action-button [actionName]="'PvP'"></app-action-button>
+  <app-action-button [actionName]="'Rest'"></app-action-button>
+  <app-action-button *ngIf="character.talent > 0" [actionName]="'Level Up'"></app-action-button>
+</div>
