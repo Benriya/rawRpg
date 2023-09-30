@@ -1,0 +1,5 @@
+<div class="characters">
+    <app-character-info [character]="Hero"></app-character-info>
+    <app-character-info [character]="Monster"></app-character-info>
+</div>
+<app-action-list *ngIf="loading" (buttonClicked)="action($event)" [actions]="fightActions"></app-action-list>

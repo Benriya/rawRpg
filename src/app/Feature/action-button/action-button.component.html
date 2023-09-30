@@ -1,3 +1,3 @@
 <div class="action">
-  <button mat-raised-button color="primary">{{actionName}}</button>
+  <button mat-raised-button color="primary" (click)="buttonClicked.emit(actionName)">{{actionName}}</button>
 </div>

@@ -1,3 +1,12 @@
-<app-character-info [character]="Hero"></app-character-info>
-<app-action-list *ngIf="!activeAction" [character]="Hero"></app-action-list>
-<app-character-info *ngIf="activeAction" [character]="Monster"></app-character-info>
+<div class="characters">
+    <app-character-info [character]="Hero"></app-character-info>
+    <app-character-info *ngIf="activeAction" [character]="Monster"></app-character-info>
+</div>
+<app-action-list *ngIf="!activeAction" (buttonClicked)="action($event)" [actions]="baseActions" [character]="Hero"></app-action-list>
+<app-action-button *ngIf="activeAction" [actionName]="'Cancel'" (buttonClicked)="cancelAction()"></app-action-button>
+
+<div>
+    <mat-grid-list cols="32">
+        <mat-grid-tile class="tile" *ngFor="let index of map">{{index}}</mat-grid-tile>
+    </mat-grid-list>
+</div>

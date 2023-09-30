@@ -8,9 +8,11 @@ import {Hero} from "../../Model/hero-model";
 })
 export class ActionListComponent {
   @Input() character: Hero | null = null;
+  @Input() actions: string[] = [];
   @Output() buttonClicked = new EventEmitter<string>();
 
-  fight(): void {
-    this.buttonClicked.emit('fight');
+
+  activateAction(name: string): void {
+    this.buttonClicked.emit(name);
   }
 }

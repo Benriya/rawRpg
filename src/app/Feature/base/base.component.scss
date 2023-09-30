@@ -1,0 +1,10 @@
+.characters {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+}
+
+.tile {
+    border: 5px solid white;
+    background-color: black;
+}

@@ -12,6 +12,10 @@ import { ActionButtonComponent } from './Feature/action-button/action-button.com
 import { MatButtonModule } from '@angular/material/button';
 import { CharacterInfoComponent } from './Feature/character-info/character-info.component';
 import { ActionListComponent } from './Feature/action-list/action-list.component';
+import { CharacterCreateComponent } from './Feature/character-create/character-create.component';
+import { MatInputModule } from '@angular/material/input';
+import { FightEnemyComponent } from './Feature/fight-enemy/fight-enemy.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -22,14 +26,18 @@ import { ActionListComponent } from './Feature/action-list/action-list.component
     AuthComponent,
     ActionButtonComponent,
     CharacterInfoComponent,
-    ActionListComponent
+    ActionListComponent,
+    CharacterCreateComponent,
+    FightEnemyComponent
   ],
   imports: [
     MatCardModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
