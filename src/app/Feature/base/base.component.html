@@ -6,7 +6,7 @@
 <app-action-button *ngIf="activeAction" [actionName]="'Cancel'" (buttonClicked)="cancelAction()"></app-action-button>
 
 <div>
-    <mat-grid-list cols="32">
-        <mat-grid-tile class="tile" *ngFor="let index of map">{{index}}</mat-grid-tile>
+    <mat-grid-list cols="32" *ngIf="position$ | async as position">
+        <mat-grid-tile [ngClass]="setTileStyle(value, i === position)" *ngFor="let value of map; index as i">{{i === position ? 'C' : value}}</mat-grid-tile>
     </mat-grid-list>
 </div>

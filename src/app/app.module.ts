@@ -16,6 +16,7 @@ import { CharacterCreateComponent } from './Feature/character-create/character-c
 import { MatInputModule } from '@angular/material/input';
 import { FightEnemyComponent } from './Feature/fight-enemy/fight-enemy.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { OpenChestComponent } from './Feature/open-chest/open-chest.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     CharacterInfoComponent,
     ActionListComponent,
     CharacterCreateComponent,
-    FightEnemyComponent
+    FightEnemyComponent,
+    OpenChestComponent
   ],
   imports: [
     MatCardModule,

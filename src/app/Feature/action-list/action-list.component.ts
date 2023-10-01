@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Hero} from "../../Model/hero-model";
+import {Hero} from "../../Model/hero.model";
 
 @Component({
   selector: 'app-action-list',
