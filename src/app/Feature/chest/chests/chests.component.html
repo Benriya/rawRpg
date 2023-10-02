@@ -1,0 +1,18 @@
+<div>
+    <mat-grid-list cols="1">
+        <mat-grid-tile *ngFor="let chest of chestList">
+            {{chest.value}}
+            <div *ngIf="closed else opened">
+                <app-action-button [actionName]="'Open'" (click)="open(chest.value)"></app-action-button>
+                <app-action-button [actionName]="'Cancel'" (click)="cancel()"></app-action-button>
+            </div>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<ng-template #opened>
+    <div>
+        Reward: {{!!amount ? amount : ''}} {{reward}}
+    </div>
+</ng-template>

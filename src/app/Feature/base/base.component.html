@@ -1,12 +1,4 @@
 <div class="characters">
     <app-character-info [character]="Hero"></app-character-info>
-    <app-character-info *ngIf="activeAction" [character]="Monster"></app-character-info>
-</div>
-<app-action-list *ngIf="!activeAction" (buttonClicked)="action($event)" [actions]="baseActions" [character]="Hero"></app-action-list>
-<app-action-button *ngIf="activeAction" [actionName]="'Cancel'" (buttonClicked)="cancelAction()"></app-action-button>
-
-<div>
-    <mat-grid-list cols="32" *ngIf="position$ | async as position">
-        <mat-grid-tile [ngClass]="setTileStyle(value, i === position)" *ngFor="let value of map; index as i">{{i === position ? 'C' : value}}</mat-grid-tile>
-    </mat-grid-list>
+    <app-action-list *ngIf="!activeAction" (buttonClicked)="action($event)" [actions]="baseActions" [character]="Hero"></app-action-list>
 </div>

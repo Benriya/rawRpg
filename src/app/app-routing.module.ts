@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FightEnemyComponent } from './Feature/fight-enemy/fight-enemy.component';
 import { BaseComponent } from './Feature/base/base.component';
-import { OpenChestComponent } from './Feature/open-chest/open-chest.component';
+import { OpenChestComponent } from './Feature/chest/open-chest/open-chest.component';
+import { AdventureComponent } from './Feature/adventures/adventure/adventure.component';
+import { ChestsComponent } from './Feature/chest/chests/chests.component';
 
 export const routes = [
   {
@@ -10,8 +12,12 @@ export const routes = [
     component: FightEnemyComponent,
   },
   {
-    path: "open-chest",
-    component: OpenChestComponent,
+    path: "Open-chest",
+    component: ChestsComponent,
+  },
+  {
+    path: "Adventure",
+    component: AdventureComponent,
   },
   {
     path: "**",

@@ -1,0 +1,24 @@
+.tile {
+    &-wall {
+        background-color: black;
+        //color: green;
+    }
+    &-space {
+        background-color: whitesmoke;
+    }
+    &-goal {
+        background-color: pink;
+    }
+    &-door {
+        background-color: #ff8000;
+    }
+    &-monster {
+        background-color: red;
+    }
+    &-player {
+        background-color: aqua;
+    }
+    &-chest {
+        background-color: gold;
+    }
+}

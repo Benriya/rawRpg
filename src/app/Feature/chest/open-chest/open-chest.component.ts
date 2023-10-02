@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChestService } from 'src/app/Service/chest/chest.service';
 
 @Component({
   selector: 'app-open-chest',

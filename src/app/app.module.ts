@@ -10,14 +10,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ActionButtonComponent } from './Feature/action-button/action-button.component';
 import { MatButtonModule } from '@angular/material/button';
-import { CharacterInfoComponent } from './Feature/character-info/character-info.component';
 import { ActionListComponent } from './Feature/action-list/action-list.component';
-import { CharacterCreateComponent } from './Feature/character-create/character-create.component';
+import { CharacterCreateComponent } from './Feature/character/character-create/character-create.component';
 import { MatInputModule } from '@angular/material/input';
 import { FightEnemyComponent } from './Feature/fight-enemy/fight-enemy.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { OpenChestComponent } from './Feature/open-chest/open-chest.component';
-
+import { OpenChestComponent } from './Feature/chest/open-chest/open-chest.component';
+import { MapComponent } from './Feature/adventures/map/map.component';
+import { AdventureComponent } from './Feature/adventures/adventure/adventure.component';
+import { CharacterInfoComponent } from './Feature/character/character-info/character-info.component';
+import { ChestsComponent } from './Feature/chest/chests/chests.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,10 @@ import { OpenChestComponent } from './Feature/open-chest/open-chest.component';
     ActionListComponent,
     CharacterCreateComponent,
     FightEnemyComponent,
-    OpenChestComponent
+    OpenChestComponent,
+    MapComponent,
+    AdventureComponent,
+    ChestsComponent
   ],
   imports: [
     MatCardModule,
