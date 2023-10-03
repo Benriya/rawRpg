@@ -1,5 +1,7 @@
 <div class="characters">
-    <app-character-info [character]="Hero"></app-character-info>
-    <app-character-info [character]="Monster"></app-character-info>
+    <app-character-info [character]="Hero | async"></app-character-info>
+    <app-action-list *ngIf="!loading" (buttonClicked)="action($event)" [actions]="fightActions"></app-action-list>
+    <app-character-info [character]="Monster | async"></app-character-info>
 </div>
-<app-action-list *ngIf="loading" (buttonClicked)="action($event)" [actions]="fightActions"></app-action-list>
+
+<div *ngFor="let log of fightLog">{{log}}</div>

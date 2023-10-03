@@ -1,7 +1,7 @@
-<div *ngIf="character" class="actions">
+<div class="actions">
   <div *ngFor="let action of actions">
     <app-action-button
-      *ngIf="character.talent > 0 || action !== 'Level up'"
+      *ngIf="(character?.talent ?? 1) > 0 || action !== 'Level up'"
       [actionName]="action"
       (click)="activateAction(action)">
     </app-action-button>

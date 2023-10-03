@@ -15,7 +15,6 @@ import { CharacterCreateComponent } from './Feature/character/character-create/c
 import { MatInputModule } from '@angular/material/input';
 import { FightEnemyComponent } from './Feature/fight-enemy/fight-enemy.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { OpenChestComponent } from './Feature/chest/open-chest/open-chest.component';
 import { MapComponent } from './Feature/adventures/map/map.component';
 import { AdventureComponent } from './Feature/adventures/adventure/adventure.component';
 import { CharacterInfoComponent } from './Feature/character/character-info/character-info.component';
@@ -32,7 +31,6 @@ import { ChestsComponent } from './Feature/chest/chests/chests.component';
     ActionListComponent,
     CharacterCreateComponent,
     FightEnemyComponent,
-    OpenChestComponent,
     MapComponent,
     AdventureComponent,
     ChestsComponent

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FightEnemyComponent } from './Feature/fight-enemy/fight-enemy.component';
 import { BaseComponent } from './Feature/base/base.component';
-import { OpenChestComponent } from './Feature/chest/open-chest/open-chest.component';
 import { AdventureComponent } from './Feature/adventures/adventure/adventure.component';
 import { ChestsComponent } from './Feature/chest/chests/chests.component';
 
