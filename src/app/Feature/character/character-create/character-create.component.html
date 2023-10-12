@@ -1,11 +1,29 @@
 <form class="character-create">
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput>
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-label>Description</mat-label>
-      <textarea matInput></textarea>
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select Race</mat-label>
+    <mat-select [formControl]="selectedRace">
+      <mat-option *ngFor="let race of raceList" [value]="race">
+        {{race.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="selectedRace">
+    <div>{{selectedRace.value?.name}}</div>
+    <div *ngFor="let stats of selectedRace.value?.stats | keyvalue">
+      {{stats.key}}: {{stats.value}}
+    </div>
+  </div>
+
+  <app-action-button [actionName]="'Save'" (click)="save()"></app-action-button>
 </form>

@@ -19,6 +19,9 @@ import { MapComponent } from './Feature/adventures/map/map.component';
 import { AdventureComponent } from './Feature/adventures/adventure/adventure.component';
 import { CharacterInfoComponent } from './Feature/character/character-info/character-info.component';
 import { ChestsComponent } from './Feature/chest/chests/chests.component';
+import { ChestRewardComponent } from './Feature/chest/chest-reward/chest-reward.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ChestsComponent } from './Feature/chest/chests/chests.component';
     FightEnemyComponent,
     MapComponent,
     AdventureComponent,
-    ChestsComponent
+    ChestsComponent,
+    ChestRewardComponent
   ],
   imports: [
     MatCardModule,
@@ -42,7 +46,9 @@ import { ChestsComponent } from './Feature/chest/chests/chests.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

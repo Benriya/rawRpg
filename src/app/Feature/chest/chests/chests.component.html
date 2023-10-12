@@ -1,10 +1,9 @@
 <div>
-    <mat-grid-list cols="1">
+    <mat-grid-list cols="2" *ngIf="!openedChest else opened">
         <mat-grid-tile *ngFor="let chest of chestList">
             {{chest.value}}
-            <div *ngIf="closed else opened">
+            <div class="flex-view">
                 <app-action-button [actionName]="'Open'" (click)="open(chest.value)"></app-action-button>
-                <app-action-button [actionName]="'Cancel'" (click)="cancel()"></app-action-button>
             </div>
 
         </mat-grid-tile>
@@ -12,7 +11,9 @@
 </div>
 
 <ng-template #opened>
-    <div>
-        Reward: {{!!amount ? amount : ''}} {{reward}}
-    </div>
+  <div class="flex-view">
+    <div>{{openedChest?.value}}</div>
+    <div>Reward: {{!!amount ? amount : ''}} {{reward}}</div>
+    <app-action-button [actionName]="'Back'" (click)="back()"></app-action-button>
+  </div>
 </ng-template>

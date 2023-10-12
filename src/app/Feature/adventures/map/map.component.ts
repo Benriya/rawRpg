@@ -2,7 +2,6 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AdventureService } from 'src/app/Service/adventure/adventure.service';
-import { CharactersService } from 'src/app/Service/characters/characters.service';
 
 @Component({
   selector: 'app-map',
@@ -45,7 +44,7 @@ export class MapComponent {
         return 'tile-space';
       case 1:
         return 'tile-wall';
-      case 2: 
+      case 2:
         return 'tile-goal';
       case 3:
         return 'tile-door';

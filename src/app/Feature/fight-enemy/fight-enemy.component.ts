@@ -28,30 +28,30 @@ export class FightEnemyComponent implements OnDestroy {
   enemyAction(): void {
     this.Hero.subscribe(hero =>  {
       this.loading = false;
-      const prevHp = hero.hp;
-      hero.hp -= 10;
-      const newHp = prevHp - hero.hp;
+      const prevHp = hero.health;
+      hero.health -= 10;
+      const newHp = prevHp - hero.health;
       this.fightLog.push(`${hero.name} suffered ${newHp} dmg`);
     });
   }
 
   resolve(name: string): void {
     this.Monster.subscribe(monster => {
-      const prevHp = monster.hp;
+      const prevHp = monster.health;
       switch (name) {
         case 'Heavy':
-          monster.hp -= 30;
+          monster.health -= 30;
           break;
         case 'Medium':
-          monster.hp -= 20;
+          monster.health -= 20;
           break;
         case 'Light':
-          monster.hp -= 10;
+          monster.health -= 10;
           break;
         default:
-          break; 
+          break;
       }
-      const newHp = prevHp - monster.hp;
+      const newHp = prevHp - monster.health;
       this.fightLog.push(`${monster.name} suffered ${newHp} dmg`);
     });
   }

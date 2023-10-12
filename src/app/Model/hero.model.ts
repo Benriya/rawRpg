@@ -4,7 +4,7 @@ export interface Hero {
   img: string,
   race: string,
   id: string,
-  hp: number,
+  health: number,
   maxHp: number,
   regen: number,
   armor: number,

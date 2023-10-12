@@ -1,10 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Hero } from "../../Model/hero.model";
+import {Race, Stat} from "../../Model/races.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharactersService {
+  raceList: Race[] = [
+    { name: 'Human', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Orc', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Goblin', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Dwarf', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Elf', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Troll', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Draenei', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Lizard', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Skeleton', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Gnome', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }},
+    { name: 'Worgen', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }}
+  ]
 
   constructor() { }
 
@@ -15,7 +29,7 @@ export class CharactersService {
       img: '',
       race: 'Draenei',
       id: '1',
-      hp: 10000,
+      health: 10000,
       maxHp: 10000,
       regen: 100,
       armor: 1000,
@@ -40,7 +54,7 @@ export class CharactersService {
       img: '',
       race: 'Draenei',
       id: '1',
-      hp: 1000,
+      health: 1000,
       maxHp: 1000,
       regen: 10,
       armor: 100,
@@ -57,4 +71,14 @@ export class CharactersService {
       timeout: 10
     }
   }
+
+  getRaceStats(raceName: string): Stat {
+    for (const raceValue of this.raceList) {
+      if (raceValue.name === raceName) {
+        return raceValue.stats;
+      }
+    }
+    throw new Error("Shouldn't be reachable");
+  }
+
 }
