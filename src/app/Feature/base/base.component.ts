@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import {CharactersService} from "../../Service/characters/characters.service";
-import { AdventureService } from 'src/app/Service/adventure/adventure.service';
+import { AdventureService } from 'src/app/Service/adventure/adventure/adventure.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 

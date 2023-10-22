@@ -18,12 +18,14 @@
     </mat-select>
   </mat-form-field>
 
-  <div *ngIf="selectedRace">
-    <div>{{selectedRace.value?.name}}</div>
-    <div *ngFor="let stats of selectedRace.value?.stats | keyvalue">
-      {{stats.key}}: {{stats.value}}
-    </div>
-  </div>
+  <mat-card *ngIf="selectedRace.value">
+    <mat-card-content>
+      <div>{{selectedRace.value.name}}</div>
+      <div *ngFor="let stats of selectedRace.value.stats | keyvalue">
+        {{stats.key}}: {{stats.value}}
+      </div>
+    </mat-card-content>
+  </mat-card>
 
   <app-action-button [actionName]="'Save'" (click)="save()"></app-action-button>
 </form>

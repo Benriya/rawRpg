@@ -1,12 +1,32 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { HeroMovementService } from '../hero-movement/hero-movement.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdventureService {
-  startPosition = 33;
+  /*
+    0: Empty
+    1: Wall
+    2: Goal
+    3: Door
+    4: Monster
+    5: Chest
+    6: Path
+  */
 
-  constructor() { }
+  constructor(private readonly heroMovementService: HeroMovementService) {}
+
+  paintPath(): number[] {
+    const path = this.heroMovementService.discoveredTiles;
+    return this.getMap().map((value, index) => {
+      if(path.includes(index)) {
+        value = 6;
+      }
+      return value; 
+    });
+  }
 
   getMap(): number[] {
     return Array.from(Array(256), (_, i) => {
