@@ -2,6 +2,8 @@ import { Component, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Hero } from 'src/app/Model/hero.model';
 import { CharactersService } from 'src/app/Service/characters/characters.service';
+import {FightEnemyService} from "../../Service/fight-enemy/fight-enemy.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-fight-enemy',
@@ -15,7 +17,11 @@ export class FightEnemyComponent implements OnDestroy {
   fightActions = ['Heavy', 'Medium', 'Light', 'Magic', 'Special'];
   fightLog: string[] = [];
 
-  constructor(private characters: CharactersService) {}
+  constructor(
+    private characters: CharactersService,
+    private fightEnemyService: FightEnemyService,
+    private readonly router: Router
+  ) {}
 
   action(name: string): void {
     console.log(this.fightLog);
@@ -32,28 +38,44 @@ export class FightEnemyComponent implements OnDestroy {
       hero.health -= 10;
       const newHp = prevHp - hero.health;
       this.fightLog.push(`${hero.name} suffered ${newHp} dmg`);
+      if(hero.health < 1) this.endFight(true);
     });
   }
 
   resolve(name: string): void {
+    let chance;
     this.Monster.subscribe(monster => {
       const prevHp = monster.health;
       switch (name) {
         case 'Heavy':
-          monster.health -= 30;
+          chance = {hit: 40, scale: 1.5};
+          monster.health -= this.fightEnemyService.showStr(this.Hero.getValue(), monster, chance, false);
           break;
         case 'Medium':
-          monster.health -= 20;
+          chance = {hit: 60, scale: 1};
+          monster.health -= this.fightEnemyService.showStr(this.Hero.getValue(), monster, chance, false);
           break;
         case 'Light':
-          monster.health -= 10;
+          chance = {hit: 80, scale: 0.5};
+          monster.health -= this.fightEnemyService.showStr(this.Hero.getValue(), monster, chance, false);
+          break;
+        case 'Magic':
+          chance = {hit: 80, scale: 1.2};
+          monster.health -= this.fightEnemyService.showStr(this.Hero.getValue(), monster, chance, true);
           break;
         default:
           break;
       }
       const newHp = prevHp - monster.health;
       this.fightLog.push(`${monster.name} suffered ${newHp} dmg`);
+      if(monster.health < 1) this.endFight(false);
     });
+  }
+
+  endFight(player: boolean): void {
+      const message = player ? "You've lost the battle" : "You've won the battle"
+      window.alert(message);
+      this.router.navigate(['/Adventure']);
   }
 
   ngOnDestroy(): void {

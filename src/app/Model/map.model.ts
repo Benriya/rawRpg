@@ -1,3 +1,3 @@
 export interface Map {
-    layout: Array<number>
+    layout: number[]
 }
