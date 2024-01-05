@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Hero} from "../../Model/hero.model";
+import { Hero } from "../../Model/hero.model";
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,7 @@ export class FightEnemyService {
     const finalDmg = magic ? attacker.intellect * 1.2 : attacker.strength * chance.scale;
     const hitChance = magic ? this.hitCalc(chance.hit, attacker, enemy) : this.hitCalc(100, attacker, enemy, (chance.hit / 100));
     const actualHit = (Math.floor(Math.random() * 100) + 1);
-    const def = enemy.defense / 5;
-    console.log(finalDmg);
-    console.log(hitChance);
-    console.log(actualHit);
+    const def = enemy.defense / 3;
 
     if(actualHit < hitChance) {
 

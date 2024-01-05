@@ -1,34 +1,101 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { HeroMovementService } from '../hero-movement/hero-movement.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdventureService {
-  /*
-    0: Empty
-    1: Wall
-    2: Goal
-    3: Door
-    4: Monster
-    5: Chest
-    6: Path
-  */
+  Empty = 0;
+  Wall = 1;
+  Goal = 2;
+  Door = 3;
+  Monster = 4;
+  Chest = 5;
+  Path = 6
+
+  maxHeight = 28;
+  maxWidth = 32;
+
+  emptyRow = Array(this.maxWidth - 2).fill(this.Empty);
+  basicRow = [this.Wall, ...this.emptyRow, this.Wall];
+  wallRow = Array(this.maxWidth).fill(this.Wall);
 
   constructor(private readonly heroMovementService: HeroMovementService) {}
 
-  paintPath(): number[] {
+  paintPath(): number[][] {
     const path = this.heroMovementService.discoveredTiles;
     return this.getMap().map((value, index) => {
-      if(path.includes(index)) {
-        value = 6;
+      let newRow = [...value];
+      for (let i = 0; i < path.length; i++) {
+        if(path[i][0] === index) {
+          newRow = this.replace(newRow, 1, path[i][1], [this.Path]);
+        }
       }
-      return value; 
+
+      return newRow;
     });
   }
 
-  getMap(): number[] {
+  getMap(): number[][] {
+    const map = [this.wallRow];
+    for (let i = 0; i < this.maxWidth - 2; i++) {
+      map.push(this.basicRow);
+    }
+
+    this.replace(map, 3, 2, this.generate('square', 3, 2));
+
+    this.replace(map, 5, 10, this.generate('rectangle', 5, 2, 3));
+
+    map.push(this.wallRow);
+
+    return map;
+  }
+
+  replace(mapRow: any, size: number, index: number, target: any): any{
+    for (let i = 0; i < target.length; i++) {
+      mapRow.splice(index + i, 1, target[i]);
+    }
+    return mapRow;
+  }
+
+  generate(type: string, x: number, pos: number, y?: number): number[][] | undefined {
+    switch (type) {
+      case 'square':
+        const square = [];
+        for (let i = 0; i < x; i++) {
+          square.push(this.createRoom(x, i, pos));
+        }
+        return square;
+      case 'rectangle':
+        const rectangle = [];
+        for (let i = 0; i < x; i++) {
+          rectangle.push(this.createRoom(x, i, pos, y));
+        }
+        return rectangle;
+      default:
+        return undefined;
+    }
+  }
+
+  createRoom(x: number, iteration: number, pos: number,  y?: number): number[] {
+    const basicRow = [this.Wall, ...this.emptyRow, this.Wall];
+    if(iteration === 0 || iteration === x - 1) {
+      const target = [];
+      for (let i = 0; i < (y ?? x); i++) {
+        target.push(this.Wall);
+      }
+      return this.replace(basicRow, x, pos, target);
+    }
+    const squareRow = [this.Wall];
+    for (let i = 0; i <= (y ?? x) - 3; i++) {
+      squareRow.push(this.Empty);
+    }
+    squareRow.push(this.Wall);
+    return this.replace(basicRow, x, pos, squareRow);
+  }
+
+  /*getMap(): number[] {
+    console.log(this.getMap2());
     return Array.from(Array(256), (_, i) => {
       const step = 32;
       const col = Math.floor((i+1) / step) -1;
@@ -83,6 +150,6 @@ export class AdventureService {
   calcSpace(index: number, place: number[], col: number, step: number): boolean {
     const result = place.map(place => index === place + (col * step));
     return result.includes(true);
-  }
+  }*/
 
 }

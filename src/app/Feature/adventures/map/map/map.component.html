@@ -1,0 +1,15 @@
+<div>
+    <!--<mat-grid-list cols="32" *ngIf="heroMovementService.heroPosition$ | async as position">
+        <mat-grid-tile [ngClass]="setTileStyle(value, i === position)" *ngFor="let value of map; index as i">
+            {{i === position ? 'C' : value}}
+        </mat-grid-tile>
+    </mat-grid-list>-->
+
+  <div *ngIf="heroMovementService.heroPosition$ | async as position">
+    <div  *ngFor="let row of map; index as i" class="row">
+      <div *ngFor="let element of row; index as j" class="tile">
+        {{element}}
+      </div>
+    </div>
+  </div>
+</div>
