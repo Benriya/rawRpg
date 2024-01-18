@@ -1,14 +1,9 @@
 <div>
-    <!--<mat-grid-list cols="32" *ngIf="heroMovementService.heroPosition$ | async as position">
-        <mat-grid-tile [ngClass]="setTileStyle(value, i === position)" *ngFor="let value of map; index as i">
-            {{i === position ? 'C' : value}}
-        </mat-grid-tile>
-    </mat-grid-list>-->
-
   <div *ngIf="heroMovementService.heroPosition$ | async as position">
     <div  *ngFor="let row of map; index as i" class="row">
-      <div *ngFor="let element of row; index as j" class="tile">
-        {{element}}
+      <div *ngFor="let element of row; index as j; trackBy: tilePlace" class="tile">
+        <img *ngIf="i === position[0] && j === position[1]" src="assets/Thrall_sprite.gif" alt="Char">
+        <img [src]="setTileStyle(element)" alt="">
       </div>
     </div>
   </div>
