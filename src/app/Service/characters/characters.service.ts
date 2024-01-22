@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Hero } from "../../Model/hero.model";
 import {Race, Stat} from "../../Model/races.model";
+import { Observable } from 'rxjs';
+import { Monster } from 'src/app/Model/monster.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,7 @@ export class CharactersService {
     { name: 'Worgen', stats: { maxHp: 100, regen: 20, armor: 10, defense: 5, strength: 3, agility: 3, intellect: 3, luck: 3, gold: 100 }}
   ]
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getHero(): Hero {
     return {
@@ -41,9 +44,7 @@ export class CharactersService {
       gold: 99999999,
       experience: 0,
       level: 99,
-      talent: 10,
-      type: 'Player',
-      timeout: 10
+      talent: 10
     }
   }
 
@@ -66,9 +67,7 @@ export class CharactersService {
       gold: 1,
       experience: 100,
       level: 99,
-      talent: 10,
-      type: 'monster',
-      timeout: 10
+      talent: 10
     }
   }
 
@@ -80,5 +79,41 @@ export class CharactersService {
     }
     throw new Error("Shouldn't be reachable");
   }
+
+  private readonly headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Authorization'});
+
+  getList(): Observable<Monster[]> {
+    return this.httpClient.get<Monster[]>('/api/Monsters', { headers: this.headers });
+  }
+
+  getMonstersByDifficult(diff: String): Observable<Monster[]> {
+    return this.httpClient.get<Monster[]>(`/api/Monster/${diff}`, { headers: this.headers });
+  }
+
+  /*getItemById(id: number): Observable<Course | undefined> {
+    return this.httpClient.get<Course>(`/api/Courses/${id}`, { headers: this.headers });
+  }
+
+  updateItem(id: number, course: Course): Observable<Course> {
+    return this.httpClient.patch<Course>(`/api/Courses/${id}`, course, { headers: this.headers });
+  }
+
+  removeItem(id: number): Observable<Course> {
+    return this.httpClient.delete<Course>(`/api/Courses/${id}`, { headers: this.headers });
+  }
+
+  searchItems(text: string): Observable<Course[]> {
+    return this.httpClient.get<Course[]>(`/api/Courses?textFragment=${text}`, { headers: this.headers });
+  }
+
+  orderItems(text: string): Observable<Course[]> {
+    return this.httpClient.get<Course[]>(`/api/Courses?sort=${text}`, { headers: this.headers });
+  }
+
+  getAuthors(): Observable<Author[]> {
+    return this.httpClient.get<Author[]>(`/api/authors`, { headers: this.headers });
+  }*/
 
 }

@@ -16,7 +16,5 @@ export interface Hero {
   gold: number,
   experience: number,
   level: number,
-  talent: number,
-  type: string,
-  timeout: number
+  talent: number
 }

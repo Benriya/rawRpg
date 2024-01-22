@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MapRowsComponent } from './Feature/adventures/map/map-rows/map-rows.component';
 import { MapColsComponent } from './Feature/adventures/map/map-cols/map-cols.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MapColsComponent } from './Feature/adventures/map/map-cols/map-cols.com
     MatInputModule,
     MatGridListModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
